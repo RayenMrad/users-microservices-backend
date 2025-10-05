@@ -43,7 +43,7 @@ public class SecurityConfig {
 					}
 				}))
 
-				.authorizeHttpRequests(requests -> requests.requestMatchers("/login").permitAll()
+				.authorizeHttpRequests(requests -> requests.requestMatchers("/login","/register/**","/verifyEmail/**").permitAll()
 						.requestMatchers("/all").hasAuthority("ADMIN")
 
 						.anyRequest().authenticated())
