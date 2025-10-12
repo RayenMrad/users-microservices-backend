@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
 	        verificationTokenRepo.save(token); 
 	        
 	      //envoyer par email pour valider l'email de l'utilisateur  
-	      //sendEmailUser(newUser,token.getToken());
+	      sendEmailUser(newUser,token.getToken());
 
 		 return userRep.save(newUser);
 	}

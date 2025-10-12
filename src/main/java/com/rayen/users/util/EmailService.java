@@ -13,16 +13,19 @@ import lombok.AllArgsConstructor;
 public class EmailService implements EmailSender{ 
 	  
     private final JavaMailSender mailSender; 
- 
+    
+    @Override
     public void sendEmail(String to, String email) { 
         try { 
             MimeMessage mimeMessage = mailSender.createMimeMessage(); 
             MimeMessageHelper helper = 
                     new MimeMessageHelper(mimeMessage, "utf-8"); 
+            
             helper.setText(email, true); 
             helper.setTo(to); 
             helper.setSubject("Confirm your email"); 
             helper.setFrom("luxwatch79@gmail.com"); 
+            
             mailSender.send(mimeMessage); 
         } catch (MessagingException e) { 
                    throw new IllegalStateException("failed to send email"); 
